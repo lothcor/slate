@@ -4,10 +4,8 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>DataGene Smartphone</title>
 
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -16,11 +14,11 @@
   background-color: #272822;
 }
 .highlight .err {
-  color: #151515;
-  background-color: #ac4142;
+  color: #272822;
+  background-color: #f92672;
 }
 .highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
-  color: #505050;
+  color: #75715e;
 }
 .highlight .cp {
   color: #f4bf75;
@@ -29,45 +27,45 @@
   color: #f4bf75;
 }
 .highlight .o, .highlight .ow {
-  color: #d0d0d0;
+  color: #f8f8f2;
 }
 .highlight .p, .highlight .pi {
-  color: #d0d0d0;
+  color: #f8f8f2;
 }
 .highlight .gi {
-  color: #90a959;
+  color: #a6e22e;
 }
 .highlight .gd {
-  color: #ac4142;
+  color: #f92672;
 }
 .highlight .gh {
-  color: #6a9fb5;
-  background-color: #151515;
+  color: #66d9ef;
+  background-color: #272822;
   font-weight: bold;
 }
 .highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
-  color: #aa759f;
+  color: #ae81ff;
 }
 .highlight .kc {
-  color: #d28445;
+  color: #fd971f;
 }
 .highlight .kt {
-  color: #d28445;
+  color: #fd971f;
 }
 .highlight .kd {
-  color: #d28445;
+  color: #fd971f;
 }
 .highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
-  color: #90a959;
+  color: #a6e22e;
 }
 .highlight .sr {
-  color: #75b5aa;
+  color: #a1efe4;
 }
 .highlight .si {
-  color: #8f5536;
+  color: #cc6633;
 }
 .highlight .se {
-  color: #8f5536;
+  color: #cc6633;
 }
 .highlight .nn {
   color: #f4bf75;
@@ -79,31 +77,32 @@
   color: #f4bf75;
 }
 .highlight .na {
-  color: #6a9fb5;
+  color: #66d9ef;
 }
 .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
-  color: #90a959;
+  color: #a6e22e;
 }
 .highlight .ss {
-  color: #90a959;
+  color: #a6e22e;
 }
     </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;ruby&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" />
+        <img src="images/navbar.png" alt="Navbar" />
       </span>
     </a>
     <div class="tocify-wrapper">
-      <img src="images/logo.png" />
+      <img src="images/logo.jpg" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -112,8 +111,7 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='http://datagene.com.au'>Farm Management app <br> developed by DataGene</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -121,149 +119,217 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
-
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
-
-<h1 id="authentication">Authentication</h1>
-
 <blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
+<p>DataGene uses the Rhodes Cross platform mobile framework to build the cross platform
+application for iOS / Android.</p>
 </blockquote>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p>Welcome to the DataGene Smartphone documentation.</p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>This will guide you through the endpoints for requesting / posting data in the controllers locally to display on screen using whichever HTML/Javascript framework is in place (currently Framework7) and sync processes to the backend server.</p>
 
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
+<h1 id="sign-in-existing-user">Sign in - Existing User</h1>
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
+<h2 id="internal">Internal</h2>
+<pre class="highlight ruby"><code> <span class="c1"># $UserName and $Pass variables are set based on query string params sent from the HTML form,</span>
+ <span class="c1"># then IP addresses used for sync are fetched with asyncget_ip().</span>
 
-<h1 id="kittens">Kittens</h1>
+  <span class="k">def</span> <span class="nf">do_normal_login</span>
+    <span class="vg">$fromlogin</span> <span class="o">=</span> <span class="kp">true</span>
+    <span class="vg">$UserName</span> <span class="o">=</span> <span class="vi">@params</span><span class="p">[</span><span class="s1">'username'</span><span class="p">]</span>
+    <span class="vg">$Pass</span> <span class="o">=</span> <span class="vi">@params</span><span class="p">[</span><span class="s1">'password'</span><span class="p">]</span>
+    <span class="n">asyncget_ip</span><span class="p">()</span>
+  <span class="k">end</span>
+</code></pre><pre class="highlight javascript"><code>
+<span class="c1">// Verify fields before submitting form to do_normal_login.</span>
 
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<span class="kd">function</span> <span class="nx">LoginValidate</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'username'</span><span class="p">).</span><span class="nx">value</span> <span class="o">==</span> <span class="s2">""</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">myApp</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'You must enter your Email Address'</span><span class="p">,</span> <span class="s1">'Missing Information!'</span><span class="p">);</span>   
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">mailformat</span> <span class="o">=</span> <span class="sr">/^</span><span class="se">\w</span><span class="sr">+</span><span class="se">([\.</span><span class="sr">-</span><span class="se">]?\w</span><span class="sr">+</span><span class="se">)</span><span class="sr">*@</span><span class="se">\w</span><span class="sr">+</span><span class="se">([\.</span><span class="sr">-</span><span class="se">]?\w</span><span class="sr">+</span><span class="se">)</span><span class="sr">*</span><span class="se">(\.\w{2,3})</span><span class="sr">+$/</span><span class="p">;</span>  
+    <span class="k">if</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'username'</span><span class="p">).</span><span class="nx">value</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">mailformat</span><span class="p">))</span>  
+    <span class="p">{</span>    
+        <span class="c1">//continue.</span>
+    <span class="p">}</span>  
+    <span class="k">else</span>  
+    <span class="p">{</span>  
+        <span class="nx">myApp</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s2">"You have entered an invalid email address!"</span><span class="p">,</span><span class="s1">'Invalid Email Address!'</span><span class="p">);</span>  
+        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'username'</span><span class="p">).</span><span class="nx">focus</span><span class="p">();</span>  
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>  
+    <span class="p">}</span>  
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'password'</span><span class="p">).</span><span class="nx">value</span> <span class="o">==</span> <span class="s2">""</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">myApp</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'You must enter a password'</span><span class="p">,</span> <span class="s1">'Missing Information!'</span><span class="p">);</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// if all is ok then submit the form.</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'password'</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">md5</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'password'</span><span class="p">).</span><span class="nx">value</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">());</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"LoginForm"</span><span class="p">).</span><span class="nx">submit</span><span class="p">();</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>            
+<span class="p">}</span>
 </code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves all kittens.</p>
+<p>This endpoint accepts POST requests in the Ruby controller from an HTML form.
+It then fetches IP addresses of DPC&rsquo;s and forwards to the external section.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
+<p><code class="prettyprint">POST /app/Settings/do_normal_login</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>Username / E-Mail address used in DataGene Web / Mobile registration.</td>
+</tr>
+<tr>
+<td>password</td>
+<td>Password used in DataGene Web / Mobile registration.</td>
+</tr>
+</tbody></table>
+
+<h2 id="external">External</h2>
+<pre class="highlight ruby"><code><span class="c1"># Use Rhodes AsyncHTTP.get to request data to server.</span>
+
+  <span class="k">def</span> <span class="nf">login_toserver</span>
+    <span class="no">Rho</span><span class="o">::</span><span class="no">AsyncHttp</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+      <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">#{</span><span class="vg">$serveraddress</span><span class="si">}</span><span class="s2">/pktuser-new.json?username=</span><span class="si">#{</span><span class="vg">$UserName</span><span class="si">}</span><span class="s2">&amp;password=</span><span class="si">#{</span><span class="vg">$Pass</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+      <span class="ss">:authentication</span> <span class="o">=&gt;</span> <span class="p">{</span>
+           <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="ss">:basic</span><span class="p">,</span> 
+           <span class="ss">:username</span> <span class="o">=&gt;</span><span class="s2">"vn5BdmRurZP8uHfk"</span><span class="p">,</span> 
+           <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="s2">"JkBmVSTJGemPu9P9"</span>
+         <span class="p">},</span>
+      <span class="ss">:callback</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="n">url_for</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="ss">:login_callback</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">render</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="ss">:wait_login</span>  
+  <span class="k">end</span>
+</code></pre>
+<blockquote>
+<p>/pktuser-new endpoint returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">  
+   </span><span class="p">{</span><span class="w">  
+      </span><span class="nt">"pktuser"</span><span class="p">:{</span><span class="w">  
+         </span><span class="nt">"Users_PocketKey"</span><span class="p">:</span><span class="s2">"guy0yxeh00gj"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"Users_DBID"</span><span class="p">:</span><span class="s2">"999"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"Users_Password"</span><span class="p">:</span><span class="s2">"549030d43960c0b5b505bdc4da93f6e5"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"Herd"</span><span class="p">:</span><span class="s2">"703293"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint accepts requests from the app and checks for users.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://202.164.192.189:3001/pktnew-user.json</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>username</td>
+<td>Username / E-Mail address used in DataGene Web / Mobile registration.</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>password</td>
+<td>Password used in DataGene Web / Mobile registration.</td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+<aside class="warning">
+Remember — 403 error means username or password is incorrect!
 </aside>
 
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id="register-new-user">Register new user</h1>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<h2 id="internal">Internal</h2>
+<pre class="highlight ruby"><code><span class="c1"># Store Pktoption params in local database, then fetch IP addresses.</span>
+
+  <span class="k">def</span> <span class="nf">asyncregisterget_ip</span>
+    <span class="k">if</span> <span class="no">System</span><span class="p">.</span><span class="nf">has_network</span><span class="p">()</span>
+      <span class="vi">@pktoptionupdate</span> <span class="o">=</span> <span class="no">Pktoption</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="ss">:first</span><span class="p">)</span>
+      <span class="k">if</span> <span class="vi">@pktoptionupdate</span>
+        <span class="no">Pktoption</span><span class="p">.</span><span class="nf">delete_all</span>
+      <span class="k">end</span>
+      <span class="vi">@pktupdate</span> <span class="o">=</span> <span class="no">Pktupdate</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">)</span>
+      <span class="k">if</span> <span class="vi">@pktupdate</span>
+        <span class="no">Pktupdate</span><span class="p">.</span><span class="nf">delete_all</span>
+      <span class="k">end</span>
+      <span class="vi">@pktoption</span> <span class="o">=</span> <span class="no">Pktoption</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="vi">@params</span><span class="p">[</span><span class="s1">'pktoption'</span><span class="p">])</span> 
+      <span class="vi">@pktupdate</span> <span class="o">=</span> <span class="no">Pktupdate</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="vi">@params</span><span class="p">[</span><span class="s1">'pktupdate'</span><span class="p">])</span>      
+      <span class="no">Rho</span><span class="o">::</span><span class="no">AsyncHttp</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+      <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">#{</span><span class="vg">$ipaddress_json</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+      <span class="ss">:callback</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="n">url_for</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="ss">:registerip_callback</span><span class="p">),</span>
+      <span class="ss">:callback_param</span> <span class="o">=&gt;</span> <span class="s2">""</span> <span class="p">)</span>
+      <span class="n">render</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="ss">:wait</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre><pre class="highlight ruby"><code>  <span class="c1"># Store IP addresses.</span>
+
+  <span class="k">def</span> <span class="nf">registerip_callback</span>
+    <span class="k">if</span> <span class="vi">@params</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">"ok"</span>
+        <span class="vc">@@error_params</span> <span class="o">=</span> <span class="vi">@params</span>
+        <span class="no">WebView</span><span class="p">.</span><span class="nf">navigate</span><span class="p">(</span> <span class="n">url_for</span><span class="p">(</span><span class="ss">:action</span> <span class="o">=&gt;</span> <span class="ss">:show_error</span><span class="p">)</span> <span class="p">)</span>        
+    <span class="k">else</span>
+      <span class="vi">@data</span> <span class="o">=</span> <span class="no">Rho</span><span class="o">::</span><span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="vi">@params</span><span class="p">[</span><span class="s2">"body"</span><span class="p">])</span>
+      <span class="nb">puts</span> <span class="s2">"DOWNLOADED </span><span class="si">#{</span><span class="vi">@data</span><span class="si">}</span><span class="s2">"</span>
+      <span class="no">Pktip</span><span class="p">.</span><span class="nf">delete_all</span>
+      <span class="n">db</span> <span class="o">=</span> <span class="o">::</span><span class="no">Rho</span><span class="o">::</span><span class="no">RHO</span><span class="p">.</span><span class="nf">get_src_db</span><span class="p">(</span><span class="s1">'Pktip'</span><span class="p">)</span>
+      <span class="n">db</span><span class="p">.</span><span class="nf">start_transaction</span>
+      <span class="k">begin</span>
+        <span class="vi">@data</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">ip</span><span class="o">|</span>
+          <span class="n">myip</span> <span class="o">=</span> <span class="no">Pktip</span><span class="p">.</span><span class="nf">new</span>
+          <span class="n">myip</span><span class="p">.</span><span class="nf">syncipaddress</span> <span class="o">=</span> <span class="n">ip</span><span class="p">[</span><span class="s2">"pktip"</span><span class="p">][</span><span class="s2">"syncipaddress"</span><span class="p">]</span>      
+          <span class="n">myip</span><span class="p">.</span><span class="nf">postipaddress</span> <span class="o">=</span> <span class="n">ip</span><span class="p">[</span><span class="s2">"pktip"</span><span class="p">][</span><span class="s2">"postipaddress"</span><span class="p">]</span>      
+          <span class="n">myip</span><span class="p">.</span><span class="nf">centre</span> <span class="o">=</span> <span class="n">ip</span><span class="p">[</span><span class="s2">"pktip"</span><span class="p">][</span><span class="s2">"Centre"</span><span class="p">]</span>  
+          <span class="n">myip</span><span class="p">.</span><span class="nf">name</span> <span class="o">=</span> <span class="n">ip</span><span class="p">[</span><span class="s2">"pktip"</span><span class="p">][</span><span class="s2">"Name"</span><span class="p">]</span>    
+          <span class="n">myip</span><span class="p">.</span><span class="nf">save</span>
+        <span class="k">end</span>
+       <span class="n">db</span><span class="p">.</span><span class="nf">commit</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+      <span class="no">WebView</span><span class="p">.</span><span class="nf">navigate</span><span class="p">(</span> <span class="n">url_for</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="ss">:check_user</span> <span class="p">)</span>  
+  <span class="k">end</span>
+</code></pre><pre class="highlight javascript"><code><span class="c1">// Validate fields and submit to asyncregisterget_ip.</span>
+
+<span class="kd">function</span> <span class="nx">LoginValidateRegister</span><span class="p">()</span> 
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'reg-password'</span><span class="p">).</span><span class="nx">value</span> <span class="o">!=</span> <span class="s2">""</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'reg-password'</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'reg-password'</span><span class="p">).</span><span class="nx">value</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'md5password'</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">md5</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'reg-password'</span><span class="p">).</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'tech'</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'email'</span><span class="p">).</span><span class="nx">value</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'email'</span><span class="p">).</span><span class="nx">value</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">'@'</span><span class="p">));</span>          
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'pktoptions_username'</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'email'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'pktupdates_sync'</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'pktupdates_sync'</span><span class="p">).</span><span class="nx">value</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
+
+    <span class="c1">// if all is ok then submit the form.</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"RegisterForm"</span><span class="p">).</span><span class="nx">submit</span><span class="p">();</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p>This endpoint accepts requests from registration forms, fetches IP addresses of DPC&rsquo;s and passes through to external server for processing.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET /app/Settings/asynchttp_register</code></p>
 
-<h3 id="url-parameters">URL Parameters</h3>
+<h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
@@ -272,75 +338,210 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>pktoptions_username</td>
+<td>E-Mail address for registration</td>
+</tr>
+<tr>
+<td>md5password</td>
+<td>md5 hashed password for registration</td>
+</tr>
+<tr>
+<td>pktupdates_sync</td>
+<td>Herd Mask</td>
+</tr>
+<tr>
+<td>tech</td>
+<td>Farm tech set to first part of email address</td>
 </tr>
 </tbody></table>
 
-          <h1 id="errors">Errors</h1>
+<h2 id="external">External</h2>
+<pre class="highlight ruby"><code><span class="c1"># Check User with usercheck to see if username exists and determine DPC for herd.</span>
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
+  <span class="k">def</span> <span class="nf">check_user</span>
+    <span class="k">if</span> <span class="no">System</span><span class="p">.</span><span class="nf">has_network</span><span class="p">()</span> 
+      <span class="vg">$httpresult</span> <span class="o">=</span> <span class="s2">"Checking username"</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="no">Pktoption</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="ss">:first</span><span class="p">)</span> 
+            <span class="vg">$UserName</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="no">Pktoptions_Email</span>
+      <span class="vg">$Herds</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="no">Pktoptions_HerdIDs</span>
 
-<p>The Kittn API uses the following error codes:</p>
+      <span class="no">Rho</span><span class="o">::</span><span class="no">AsyncHttp</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+        <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">#{</span><span class="vg">$serveraddress</span><span class="si">}</span><span class="s2">/usercheck.json?login=</span><span class="si">#{</span><span class="vg">$UserName</span><span class="si">}</span><span class="s2">&amp;herds=</span><span class="si">#{</span><span class="vg">$Herds</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+        <span class="ss">:callback</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="n">url_for</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="ss">:checkuser_callback</span><span class="p">),</span>
+        <span class="ss">:authentication</span> <span class="o">=&gt;</span> <span class="p">{</span>
+             <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="ss">:basic</span><span class="p">,</span> 
+             <span class="ss">:username</span> <span class="o">=&gt;</span><span class="s2">"vn5BdmRurZP8uHfk"</span><span class="p">,</span> 
+             <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="s2">"JkBmVSTJGemPu9P9"</span>
+           <span class="p">},</span>
+        <span class="ss">:callback_param</span> <span class="o">=&gt;</span> <span class="s2">""</span> <span class="p">)</span>
+        <span class="n">render</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="ss">:wait</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre><pre class="highlight ruby"><code><span class="c1"># If Users_Email in returned JSON then user exists.</span>
+<span class="c1"># If DPC in returned JSON set DPC based on what is returned.</span>
+
+  <span class="k">def</span> <span class="nf">checkuser_callback</span>
+    <span class="k">if</span> <span class="vi">@params</span><span class="p">[</span><span class="s1">'body'</span><span class="p">].</span><span class="nf">include?</span> <span class="s1">'Users_Email'</span>
+      <span class="vg">$HerdID</span> <span class="o">=</span> <span class="s1">'None'</span>
+      <span class="vi">@pktoption</span> <span class="o">=</span> <span class="no">Pktoption</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="ss">:first</span><span class="p">)</span>
+      <span class="vi">@pktoption</span><span class="p">.</span><span class="nf">update_attributes</span><span class="p">({</span><span class="s2">"Pktoptions_HerdIDs"</span> <span class="o">=&gt;</span> <span class="s2">"None"</span><span class="p">})</span>
+      <span class="n">alertBox</span><span class="p">(</span><span class="s2">"A User with that email address: </span><span class="si">#{</span><span class="vg">$UserName</span><span class="si">}</span><span class="s2"> already exists.
+       Please user another."</span><span class="p">,</span><span class="s1">'User Exists'</span><span class="p">)</span>
+      <span class="no">WebView</span><span class="p">.</span><span class="nf">navigate</span><span class="p">(</span><span class="s1">'/app/Settings/new'</span><span class="p">)</span> 
+    <span class="k">else</span>
+      <span class="vg">$dpc</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="vi">@params</span><span class="p">[</span><span class="s1">'body'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+      <span class="k">if</span> <span class="vg">$DemoVersion</span> <span class="o">==</span> <span class="kp">true</span>
+        <span class="vg">$dpc</span> <span class="o">=</span> <span class="mi">999</span>
+      <span class="k">end</span>
+      <span class="vi">@pktoption</span> <span class="o">=</span> <span class="no">Pktoption</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="ss">:first</span><span class="p">)</span>        
+      <span class="vi">@pktoption</span><span class="p">.</span><span class="nf">update_attributes</span><span class="p">({</span><span class="s2">"Pktoptions_HTCentre"</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">#{</span><span class="vg">$dpc</span><span class="si">}</span><span class="s2">"</span><span class="p">})</span>
+      <span class="no">WebView</span><span class="p">.</span><span class="nf">navigate</span><span class="p">(</span> <span class="n">url_for</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="ss">:do_login</span> <span class="p">)</span> 
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre><pre class="highlight ruby"><code><span class="c1"># JSON generate PktOptions table and send to server.</span>
+
+  <span class="k">def</span> <span class="nf">do_login</span>
+    <span class="k">if</span> <span class="no">System</span><span class="p">.</span><span class="nf">has_network</span><span class="p">()</span> 
+            <span class="n">data</span> <span class="o">=</span> <span class="no">Pktoption</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="ss">:first</span><span class="p">)</span> 
+            <span class="n">gen_content</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\"</span><span class="s2">pktoption</span><span class="se">\"</span><span class="s2">:"</span> <span class="o">+</span> <span class="o">::</span><span class="no">JSON</span><span class="p">.</span><span class="nf">generate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="vg">$HerdID</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="no">Pktoptions_HerdIDs</span>
+            <span class="vg">$Techs</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="no">Pktoptions_TechNames</span>
+            <span class="vg">$UserName</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="no">Pktoptions_UserName</span>
+            <span class="vi">@HTCentre</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="no">Pktoptions_HTCentre</span>
+            <span class="vi">@clientid</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="no">Pktoptions_id</span>
+            <span class="vi">@pass</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="no">Pktoptions_Password</span>
+      <span class="vg">$httpresult</span> <span class="o">=</span> <span class="s1">'Sending request'</span>
+      <span class="vi">@pktip</span> <span class="o">=</span> <span class="no">Pktip</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="ss">:first</span><span class="p">,</span> <span class="ss">:conditions</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'centre like ?'</span><span class="p">,</span>
+       <span class="s2">"</span><span class="si">#{</span><span class="vi">@HTCentre</span><span class="si">}</span><span class="s2">"</span><span class="p">],</span> <span class="ss">:select</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'centre'</span><span class="p">,</span><span class="s1">'postipaddress'</span><span class="p">])</span>
+        <span class="k">if</span> <span class="vi">@pktip</span>
+          <span class="vi">@serveraddress</span> <span class="o">=</span> <span class="vi">@pktip</span><span class="p">.</span><span class="nf">postipaddress</span>
+        <span class="k">else</span>
+          <span class="vi">@serveraddress</span> <span class="o">=</span> <span class="s2">"202.164.192.189:9890"</span>
+        <span class="k">end</span>
+          <span class="no">Rho</span><span class="o">::</span><span class="no">AsyncHttp</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+           <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">#{</span><span class="vi">@serveraddress</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+                   <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s1">'Content-Type'</span><span class="o">=&gt;</span><span class="s1">'application/json'</span><span class="p">},</span>
+                   <span class="ss">:authentication</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                      <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="ss">:basic</span><span class="p">,</span> 
+                      <span class="ss">:username</span> <span class="o">=&gt;</span> <span class="s2">"register"</span><span class="p">,</span> 
+                      <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="s2">"register"</span>
+                     <span class="p">},</span>
+                   <span class="ss">:body</span> <span class="o">=&gt;</span> <span class="n">gen_content</span><span class="p">,</span> 
+                   <span class="ss">:callback</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="n">url_for</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="ss">:httplogin_callback</span><span class="p">),</span> 
+                   <span class="ss">:callback_param</span> <span class="o">=&gt;</span> <span class="s2">""</span> <span class="p">)</span>
+
+        <span class="n">render</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="ss">:wait</span>
+    <span class="k">else</span>
+      <span class="n">okBox</span><span class="p">(</span><span class="s2">"You are not connected to the internet! 
+      Cannot Sync Data!"</span><span class="p">,</span><span class="s1">'/app/Start/index'</span><span class="p">,</span><span class="s1">'No Internet'</span><span class="p">)</span> 
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre>
+<blockquote>
+<p>PocketService endpoint returns a body text of &lsquo;All OK.&rsquo; if successful.</p>
+</blockquote>
+
+<p>This endpoint checks the User is available on the server and returns the DPC number to be used for sensing registration.</p>
+
+<h3 id="check-user-http-request">CHECK USER HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://202.164.192.189:3001/usercheck.json</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
+<td>login</td>
+<td>E-Mail address for registration</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
+<td>herds</td>
+<td>Herd list user is registering</td>
+</tr>
+</tbody></table>
+
+<p>This &#39;PocketService&rsquo; endpoint sends the registration request to the server.</p>
+
+<h3 id="send-registration-request">SEND Registration request</h3>
+
+<p><code class="prettyprint">POST http://202.164.192.189:9890</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Pktoptions_UserName</td>
+<td>E-Mail address for registration</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td>Pktoptions_Password</td>
+<td>Password for registration</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
+<td>Pktoptions_HerdIDs</td>
+<td>Herd list user is registering</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+<td>Pktoptions_TechNames</td>
+<td>Name of tech (email address before &rsquo;@&rsquo;)</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
+<td>Pktoptions_HTCentre</td>
+<td>DPC number</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
+<td>Pktoptions_id</td>
+<td>client id generated for device</td>
 </tr>
+</tbody></table>
+
+<h1 id="cow-lists">Cow Lists</h1>
+
+<h2 id="general-listings">General Listings</h2>
+<pre class="highlight javascript"><code>
+</code></pre><pre class="highlight ruby"><code>
+</code></pre>
+<p>This generalizes the list endpoints and the returned JSON data structure.</p>
+
+<h3 id="cowlist-http-request">CowList HTTP Request</h3>
+
+<p><code class="prettyprint">GET /app/Pktfemale/find_cows</code></p>
+
+<h2 id="search-functions">Search functions</h2>
+<pre class="highlight javascript"><code></code></pre><pre class="highlight ruby"><code></code></pre>
+<p>This generalizes the search endpoints when typing an animal ID and pressing done.</p>
+
+<h3 id="search-http-request">Search HTTP Request</h3>
+
+<p><code class="prettyprint">GET /app/Pktfemale/show</code></p>
+
+<table><thead>
 <tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
+</thead><tbody>
 <tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+<td>search</td>
+<td>Herd Recording number of animal</td>
 </tr>
 </tbody></table>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
                 <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
