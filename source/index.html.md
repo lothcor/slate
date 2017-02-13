@@ -1983,6 +1983,7 @@ This endpoint is used to store the details of the workability scoring in the loc
 Parameter | Default | Description
 --------- | ------- | -----------
 id | object field | object id of animal record
+pktfemale[Cows_WorksDate] | Today | Date of workability scoring
 pktupdate[Pktupdates_ID] | NULL | Generated ID for pktupdates record
 pktupdate[Pktupdates_Entered] | Now | DateTime stamp record is being created
 pktupdate[Pktupdates_HerdID] | Herd |Herd Mask
