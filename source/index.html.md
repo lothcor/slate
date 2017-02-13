@@ -1994,3 +1994,48 @@ pktupdate[Pktupdates_ECode] | NULL | Event Code
 pktupdate[Pktupdates_Status] | N | Status of record
 pktupdate[Pktupdates_AnimalID] | Nat ID | National ID of animal
 pktupdate[Pktupdates_DataString] | NULL | Details of workability scoring
+
+#Reports
+## HTTP Request
+
+The reports shown in the app are HTML tables and have no specific parameters for their endpoints, The endpoints are the name of the .erb view and run when requested.
+
+`GET /app/Report/cowmated`
+
+`GET /app/Report/cowreg`
+
+`GET /app/Report/duecalve`
+
+`GET /app/Report/duedry`
+
+`GET /app/Report/withhold`
+
+## Date formatting
+
+```ruby
+  def format_date_shortyear(datestring)    
+    if !datestring
+      result = ''
+    else
+      result = Date.strptime(datestring,'%d/%m/%Y')
+      result = result.strftime('%d/%m/%y')
+    end
+  end
+```
+
+Reports make use of the dd/mm/yy date formatting for display, however sqlite only supports a 4 digit year.
+The following parameters are passed to the endpoint for converting date strings.
+
+`GET /app/Report/format_date_shortyear(datestring)`
+
+Paremeter | Description
+--------- | -----------
+Date String | Date string formatted as dd/mm/yyyy to return a dd/mm/yy formatted string
+
+# Bulls
+## Bull Team
+
+# Drugs
+## Drug Cupboard
+
+# Sync
