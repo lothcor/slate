@@ -256,7 +256,7 @@ It then fetches IP addresses of DPC&rsquo;s and forwards to the external section
 Remember — 403 error means username or password is incorrect!
 </aside>
 
-<h1 id="register-new-user">Register new user</h1>
+<h1 id="register-new-user">Register - New User</h1>
 
 <h2 id="internal">Internal</h2>
 
@@ -2729,6 +2729,670 @@ Remember — 403 error means username or password is incorrect!
 <td>Details of workability scoring</td>
 </tr>
 </tbody></table>
+
+<h1 id="reports">Reports</h1>
+
+<h2 id="http-request">HTTP Request</h2>
+
+<p>The reports shown in the app are HTML tables and have no specific parameters for their endpoints, The endpoints are the name of the .erb view and run when requested.</p>
+
+<p><code class="prettyprint">GET /app/Report/cowmated</code></p>
+
+<p><code class="prettyprint">GET /app/Report/cowreg</code></p>
+
+<p><code class="prettyprint">GET /app/Report/duecalve</code></p>
+
+<p><code class="prettyprint">GET /app/Report/duedry</code></p>
+
+<p><code class="prettyprint">GET /app/Report/withhold</code></p>
+
+<h2 id="date-formatting">Date formatting</h2>
+<pre class="highlight ruby"><code>  <span class="k">def</span> <span class="nf">format_date_shortyear</span><span class="p">(</span><span class="n">datestring</span><span class="p">)</span>    
+    <span class="k">if</span> <span class="o">!</span><span class="n">datestring</span>
+      <span class="n">result</span> <span class="o">=</span> <span class="s1">''</span>
+    <span class="k">else</span>
+      <span class="n">result</span> <span class="o">=</span> <span class="no">Date</span><span class="p">.</span><span class="nf">strptime</span><span class="p">(</span><span class="n">datestring</span><span class="p">,</span><span class="s1">'%d/%m/%Y'</span><span class="p">)</span>
+      <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="p">.</span><span class="nf">strftime</span><span class="p">(</span><span class="s1">'%d/%m/%y'</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre>
+<p>Reports make use of the dd/mm/yy date formatting for display, however sqlite only supports a 4 digit year.
+The following parameters are passed to the endpoint for converting date strings.</p>
+
+<p><code class="prettyprint">GET /app/Report/format_date_shortyear(datestring)</code></p>
+
+<table><thead>
+<tr>
+<th>Paremeter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Date String</td>
+<td>Date string formatted as dd/mm/yyyy to return a dd/mm/yy formatted string</td>
+</tr>
+</tbody></table>
+
+<h1 id="bulls">Bulls</h1>
+
+<h2 id="bull-team">Bull Team</h2>
+
+<h1 id="drugs">Drugs</h1>
+
+<h2 id="drug-cupboard">Drug Cupboard</h2>
+
+<h1 id="sync">Sync</h1>
+
+<h2 id="sync-addresses">Sync Addresses</h2>
+
+<aside class="notice">
+JSON data pulled from server is technically invalid, we use the table prefix before data for each record.
+</aside>
+
+<p>Smartphone sends and receives data to endpoints based on uri in the JSON file the app downloads on sync (to ensure up to date endpoints).</p>
+
+<p><code class="prettyprint">GET http://mistro.com.au/ipaddresses_au.json</code></p>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">  
+   </span><span class="p">{</span><span class="w">  
+      </span><span class="nt">"pktip"</span><span class="p">:{</span><span class="w">  
+         </span><span class="nt">"postipaddress"</span><span class="p">:</span><span class="s2">"119.252.76.56:8891"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"syncipaddress"</span><span class="p">:</span><span class="s2">"119.252.76.56:3001"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"Centre"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"Name"</span><span class="p">:</span><span class="s2">"Hico Australia"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="w">  
+      </span><span class="nt">"pktip"</span><span class="p">:{</span><span class="w">  
+         </span><span class="nt">"postipaddress"</span><span class="p">:</span><span class="s2">"119.252.76.56:8891"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"syncipaddress"</span><span class="p">:</span><span class="s2">"119.252.76.56:3001"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"Centre"</span><span class="p">:</span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"Name"</span><span class="p">:</span><span class="s2">"Yarram"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">},</span><span class="w">  
+   </span><span class="p">{</span><span class="w">  
+      </span><span class="nt">"pktip"</span><span class="p">:{</span><span class="w">  
+         </span><span class="nt">"postipaddress"</span><span class="p">:</span><span class="s2">"119.252.76.56:8891"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"syncipaddress"</span><span class="p">:</span><span class="s2">"119.252.76.56:3001"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"Centre"</span><span class="p">:</span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"Name"</span><span class="p">:</span><span class="s2">"National Herd Development"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="w">  
+      </span><span class="nt">"pktip"</span><span class="p">:{</span><span class="w">  
+         </span><span class="nt">"postipaddress"</span><span class="p">:</span><span class="s2">"119.252.76.56:8891"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"syncipaddress"</span><span class="p">:</span><span class="s2">"119.252.76.56:3001"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"Centre"</span><span class="p">:</span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"Name"</span><span class="p">:</span><span class="s2">"Dairy Express"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">},</span><span class="w">  
+   </span><span class="p">{</span><span class="w">  
+      </span><span class="nt">"pktip"</span><span class="p">:{</span><span class="w">  
+         </span><span class="nt">"postipaddress"</span><span class="p">:</span><span class="s2">"119.252.76.56:8891"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"syncipaddress"</span><span class="p">:</span><span class="s2">"119.252.76.56:3001"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"Centre"</span><span class="p">:</span><span class="s2">"22"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"Name"</span><span class="p">:</span><span class="s2">"TasHerd"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">},</span><span class="w">    
+   </span><span class="p">{</span><span class="w">  
+      </span><span class="nt">"pktip"</span><span class="p">:{</span><span class="w">  
+         </span><span class="nt">"postipaddress"</span><span class="p">:</span><span class="s2">"119.252.76.56:8891"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"syncipaddress"</span><span class="p">:</span><span class="s2">"119.252.76.56:3001"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"Centre"</span><span class="p">:</span><span class="s2">"32"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"Name"</span><span class="p">:</span><span class="s2">"FarmWest"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="w">  
+      </span><span class="nt">"pktip"</span><span class="p">:{</span><span class="w">  
+         </span><span class="nt">"postipaddress"</span><span class="p">:</span><span class="s2">"202.164.192.189:9890"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"syncipaddress"</span><span class="p">:</span><span class="s2">"202.164.192.189:3001"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"Centre"</span><span class="p">:</span><span class="s2">"999"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"Name"</span><span class="p">:</span><span class="s2">"Demo"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h2 id="get-requests-for-data">GET requests for data</h2>
+
+<aside class="notice">
+JSON data pulled from server is technically invalid, we use the table prefix before data for each record.
+</aside>
+
+<h3 id="animalids">AnimalIDs</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">  
+   </span><span class="nt">"pktanimalid"</span><span class="p">:{</span><span class="w">  
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"1018"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"S"</span><span class="p">:</span><span class="s2">"F"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Herd"</span><span class="p">:</span><span class="s2">"703932"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET 202.164.192.189:3001/pktanimalids.json</code></p>
+
+<h4 id="query-parameters">Query Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>herd</td>
+<td>Herd Mask</td>
+<td>Herd Mask / Shire Herd number</td>
+</tr>
+<tr>
+<td>login</td>
+<td>Email-Client ID</td>
+<td>Email address used in registration - Client ID generated with registration</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>Hashed Password</td>
+<td>Hashed version of password</td>
+</tr>
+<tr>
+<td>dpc</td>
+<td>DPC Code</td>
+<td>DPC Code app is set to sync with</td>
+</tr>
+</tbody></table>
+
+<h3 id="bull-teams">Bull Teams</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">  
+   </span><span class="nt">"pktbteam"</span><span class="p">:{</span><span class="w">  
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"2140000773"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"BTeams_HerdID"</span><span class="p">:</span><span class="s2">"703478"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"BTeams_BullID"</span><span class="p">:</span><span class="s2">"A00009209"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"BTeams_Nasis1"</span><span class="p">:</span><span class="s2">"29FFP65"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"BTeams_Nasis2"</span><span class="p">:</span><span class="s2">"DONOR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"BTeams_ShortName"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"BTeams_RegName"</span><span class="p">:</span><span class="s2">"ELITE MOUNTAIN DONOR IMP (E.T)"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"BTeams_Birth"</span><span class="p">:</span><span class="s2">"1994-04-26"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"BTeams_BreedS"</span><span class="p">:</span><span class="s2">"FFFF"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"BTeams_Modified"</span><span class="p">:</span><span class="s2">"2014-04-14 00:00:01"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET 202.164.192.189:3001/pktbteams.json</code></p>
+
+<h4 id="query-parameters">Query Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>herd</td>
+<td>Herd Mask</td>
+<td>Herd Mask / Shire Herd number</td>
+</tr>
+<tr>
+<td>login</td>
+<td>Email-Client ID</td>
+<td>Email address used in registration - Client ID generated with registration</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>Hashed Password</td>
+<td>Hashed version of password</td>
+</tr>
+<tr>
+<td>dpc</td>
+<td>DPC Code</td>
+<td>DPC Code app is set to sync with</td>
+</tr>
+</tbody></table>
+
+<h3 id="bulls">Bulls</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">  
+   </span><span class="nt">"pktbull"</span><span class="p">:{</span><span class="w">  
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"MBSL"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Bulls_Nasis1"</span><span class="p">:</span><span class="s2">"11FFV24"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Bulls_ShortName"</span><span class="p">:</span><span class="s2">"LOYALTY"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Bulls_RegName"</span><span class="p">:</span><span class="s2">"MURRIBROOK STARLITE LOYALTY"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Bulls_BreedS"</span><span class="p">:</span><span class="s2">"FFFF"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Bulls_Birth"</span><span class="p">:</span><span class="s2">"1976-08-05"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Bulls_Modified"</span><span class="p">:</span><span class="s2">"2015-06-24 00:00:01"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET 202.164.192.189:3001/pktbulls.json</code></p>
+
+<h3 id="cow-events">Cow Events</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">  
+   </span><span class="nt">"pktcowevent"</span><span class="p">:{</span><span class="w">  
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"2771160002274"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"CowEvents_HerdID"</span><span class="p">:</span><span class="s2">"703478"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"CowEvents_CowID"</span><span class="p">:</span><span class="s2">"Z16270508"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"CowEvents_Date"</span><span class="p">:</span><span class="s2">"2016-09-05"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Events_ECode"</span><span class="p">:</span><span class="s2">"W14"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Events_EGroup"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Events_NeedLoc"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"CowEvents_Sire"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"CowEvents_TechID"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"CowEvents_RxTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"CowEvents_Remark"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"CowEvents_Modified"</span><span class="p">:</span><span class="kc">null</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET 202.164.192.189:3001/pktcowevents.json</code></p>
+
+<h4 id="query-parameters">Query Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>herd</td>
+<td>Herd Mask</td>
+<td>Herd Mask / Shire Herd number</td>
+</tr>
+<tr>
+<td>login</td>
+<td>Email-Client ID</td>
+<td>Email address used in registration - Client ID generated with registration</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>Hashed Password</td>
+<td>Hashed version of password</td>
+</tr>
+<tr>
+<td>dpc</td>
+<td>DPC Code</td>
+<td>DPC Code app is set to sync with</td>
+</tr>
+</tbody></table>
+
+<h3 id="cow-tests">Cow Tests</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">  
+   </span><span class="nt">"pktcowtest"</span><span class="p">:{</span><span class="w">  
+      </span><span class="nt">"CowTests_HerdID"</span><span class="p">:</span><span class="s2">"703478"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"CowTests_CowID"</span><span class="p">:</span><span class="s2">"Z16270508"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"TestDays_Date"</span><span class="p">:</span><span class="s2">"2016-09-29"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"CowTests_Yield1"</span><span class="p">:</span><span class="s2">"22.6"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"CowTests_FatP"</span><span class="p">:</span><span class="s2">"3.78"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"CowTests_Fat"</span><span class="p">:</span><span class="s2">"0.85"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"CowTests_ProtP"</span><span class="p">:</span><span class="s2">"3.50"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"CowTests_Prot"</span><span class="p">:</span><span class="s2">"0.79"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"CowTests_ICCC"</span><span class="p">:</span><span class="s2">"106"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET 202.164.192.189:3001/pktcowtests.json</code></p>
+
+<h4 id="query-parameters">Query Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>herd</td>
+<td>Herd Mask</td>
+<td>Herd Mask / Shire Herd number</td>
+</tr>
+<tr>
+<td>login</td>
+<td>Email-Client ID</td>
+<td>Email address used in registration - Client ID generated with registration</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>Hashed Password</td>
+<td>Hashed version of password</td>
+</tr>
+<tr>
+<td>dpc</td>
+<td>DPC Code</td>
+<td>DPC Code app is set to sync with</td>
+</tr>
+</tbody></table>
+
+<h3 id="drug-cupboard">Drug Cupboard</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">  
+   </span><span class="nt">"pktcupboard"</span><span class="p">:{</span><span class="w">  
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"2130001173"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cupboards_HerdID"</span><span class="p">:</span><span class="s2">"703478"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cupboards_EventID"</span><span class="p">:</span><span class="s2">"49840"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cupboards_ECode"</span><span class="p">:</span><span class="s2">"CIDR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cupboards_Name"</span><span class="p">:</span><span class="s2">"EAZI-BREED CIDR CATTLE DEVICE"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cupboards_EGroup"</span><span class="p">:</span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cupboards_NeedLoc"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cupboards_Common"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cupboards_ActMilkWith1"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cupboards_ActMilkWith2"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cupboards_ActMeatWith1"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cupboards_ActMeatWith2"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cupboards_Modified"</span><span class="p">:</span><span class="s2">"2013-12-11 00:00:01"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET 202.164.192.189:3001/pktcupboards.json</code></p>
+
+<h4 id="query-parameters">Query Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>herd</td>
+<td>Herd Mask</td>
+<td>Herd Mask / Shire Herd number</td>
+</tr>
+<tr>
+<td>login</td>
+<td>Email-Client ID</td>
+<td>Email address used in registration - Client ID generated with registration</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>Hashed Password</td>
+<td>Hashed version of password</td>
+</tr>
+<tr>
+<td>dpc</td>
+<td>DPC Code</td>
+<td>DPC Code app is set to sync with</td>
+</tr>
+</tbody></table>
+
+<h3 id="event-list">Event List</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">  
+   </span><span class="nt">"pktevent"</span><span class="p">:{</span><span class="w">  
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Events_ECode"</span><span class="p">:</span><span class="s2">"MAP"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Events_Name"</span><span class="p">:</span><span class="s2">"MATING-AI-CENTRE TECHNICIAN"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Events_EGroup"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Events_NeedLoc"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Events_Common"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Events_Modified"</span><span class="p">:</span><span class="s2">"2008-06-12 00:00:01"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET 202.164.192.189:3001/pktevents.json</code></p>
+
+<h3 id="cows">Cows</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">  
+   </span><span class="nt">"pktfemale"</span><span class="p">:{</span><span class="w">  
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"Y07P30655"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_HerdID"</span><span class="p">:</span><span class="s2">"703932"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_NLISID"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_HIONo"</span><span class="p">:</span><span class="s2">"1905"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_HIONoSorted"</span><span class="p">:</span><span class="s2">" 0000001905"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_Birth"</span><span class="p">:</span><span class="s2">"2007-08-21"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_Sire"</span><span class="p">:</span><span class="s2">"1H0882"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_Dam"</span><span class="p">:</span><span class="s2">"2034"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_Dam_Herd"</span><span class="p">:</span><span class="s2">"703932"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_BreedS"</span><span class="p">:</span><span class="s2">"FFJF"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_ElecID"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_HRID"</span><span class="p">:</span><span class="s2">"1905"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_RegName"</span><span class="p">:</span><span class="s2">"1905"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_HerdBook"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_Remark"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_MilkSpeed"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_Temperament"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_Likeability"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_WorksDate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_NZMI"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_BW"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_ABVASI"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_CowStatus"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_CurAgeGroup"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_LastCalvDate"</span><span class="p">:</span><span class="s2">"2015-10-14"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_LastDryOff"</span><span class="p">:</span><span class="s2">"2017-02-03"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_LastDryOffCode"</span><span class="p">:</span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_LastTest"</span><span class="p">:</span><span class="s2">"2016-05-11"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_TermDate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_ExitCode"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_LastServ"</span><span class="p">:</span><span class="s2">"2016-06-13"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_LastSire"</span><span class="p">:</span><span class="s2">"29HO17576"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_PrevSire"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_PrevServ"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_DueDate"</span><span class="p">:</span><span class="s2">"2017-04-16"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_DueSire"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_DueDryOff"</span><span class="p">:</span><span class="s2">"2017-02-20"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_HerdGroup"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_Modified"</span><span class="p">:</span><span class="s2">"2017-02-05 00:00:01"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET 202.164.192.189:3001/pktfemales.json</code></p>
+
+<h4 id="query-parameters">Query Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>herd</td>
+<td>Herd Mask</td>
+<td>Herd Mask / Shire Herd number</td>
+</tr>
+<tr>
+<td>login</td>
+<td>Email-Client ID</td>
+<td>Email address used in registration - Client ID generated with registration</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>Hashed Password</td>
+<td>Hashed version of password</td>
+</tr>
+<tr>
+<td>dpc</td>
+<td>DPC Code</td>
+<td>DPC Code app is set to sync with</td>
+</tr>
+</tbody></table>
+
+<h3 id="graph-plots">Graph Plots</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">  
+   </span><span class="nt">"pktgraph"</span><span class="p">:{</span><span class="w">  
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"3823997"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"herdID"</span><span class="p">:</span><span class="s2">"703478"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"chart"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lineNo"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pointNo"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"xDate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"xVal"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"y1"</span><span class="p">:</span><span class="s2">"574"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET 202.164.192.189:3001/pktgraphs.json</code></p>
+
+<h4 id="query-parameters">Query Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>herd</td>
+<td>Herd Mask</td>
+<td>Herd Mask / Shire Herd number</td>
+</tr>
+<tr>
+<td>login</td>
+<td>Email-Client ID</td>
+<td>Email address used in registration - Client ID generated with registration</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>Hashed Password</td>
+<td>Hashed version of password</td>
+</tr>
+<tr>
+<td>dpc</td>
+<td>DPC Code</td>
+<td>DPC Code app is set to sync with</td>
+</tr>
+</tbody></table>
+
+<h3 id="herd-groups">Herd Groups</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">  
+   </span><span class="nt">"pkthgroup"</span><span class="p">:{</span><span class="w">  
+      </span><span class="nt">"HGroups_ID"</span><span class="p">:</span><span class="s2">"2120000270"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"HGroups_Code"</span><span class="p">:</span><span class="s2">"Group 1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Herds_Name"</span><span class="p">:</span><span class="s2">"703932"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET 202.164.192.189:3001/pkthgroups.json</code></p>
+
+<h4 id="query-parameters">Query Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>herd</td>
+<td>Herd Mask</td>
+<td>Herd Mask / Shire Herd number</td>
+</tr>
+<tr>
+<td>dpc</td>
+<td>DPC Code</td>
+<td>DPC Code app is set to sync with</td>
+</tr>
+</tbody></table>
+
+<h3 id="cow-lactations">Cow Lactations</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">  
+   </span><span class="nt">"pktlact"</span><span class="p">:{</span><span class="w">  
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"229915000922"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Lacts_HerdID"</span><span class="p">:</span><span class="s2">"703932"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Lacts_CowID"</span><span class="p">:</span><span class="s2">"Y046Z0116"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Cows_CowStatus"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Lacts_InitDate"</span><span class="p">:</span><span class="s2">"2015-08-16"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Stats_CurPI"</span><span class="p">:</span><span class="s2">"108"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Stats_TotalYield"</span><span class="p">:</span><span class="s2">"8156"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Stats_TotalFatPerc"</span><span class="p">:</span><span class="s2">"5.08"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Stats_TotalProtPerc"</span><span class="p">:</span><span class="s2">"3.31"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET 202.164.192.189:3001/pktlacts.json</code></p>
+
+<h4 id="query-parameters">Query Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>herd</td>
+<td>Herd Mask</td>
+<td>Herd Mask / Shire Herd number</td>
+</tr>
+<tr>
+<td>login</td>
+<td>Email-Client ID</td>
+<td>Email address used in registration - Client ID generated with registration</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>Hashed Password</td>
+<td>Hashed version of password</td>
+</tr>
+<tr>
+<td>dpc</td>
+<td>DPC Code</td>
+<td>DPC Code app is set to sync with</td>
+</tr>
+</tbody></table>
+
+<h3 id="update-errors">Update errors</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">  
+   </span><span class="nt">"pktupdate"</span><span class="p">:{</span><span class="w">  
+      </span><span class="nt">"Pktupdates_ID"</span><span class="p">:</span><span class="s2">"213894"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Pktupdates_Pktid"</span><span class="p">:</span><span class="s2">"20160704104801"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Pktupdates_Status"</span><span class="p">:</span><span class="s2">"E"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Pktupdates_HerdID"</span><span class="p">:</span><span class="s2">"510299"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Pktupdates_Entered"</span><span class="p">:</span><span class="s2">"2016-07-04 10:48:01"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Pktupdates_Process"</span><span class="p">:</span><span class="s2">"S"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Pktupdates_CowNo"</span><span class="p">:</span><span class="s2">"2537"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Pktupdates_EDate"</span><span class="p">:</span><span class="s2">"2016-07-04"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Pktupdates_ECode"</span><span class="p">:</span><span class="s2">"S3"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Pktupdates_ErrMsg"</span><span class="p">:</span><span class="s2">"1102: Animal record already has a termination date recorded"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Pktupdates_AnimalID"</span><span class="p">:</span><span class="s2">"Y106F0081"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Pktupdates_DataString"</span><span class="p">:</span><span class="s2">""</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET 202.164.192.189:3001/pktupdates.json</code></p>
+
+<h4 id="query-parameters">Query Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>herd</td>
+<td>Herd Mask</td>
+<td>Herd Mask / Shire Herd number</td>
+</tr>
+<tr>
+<td>login</td>
+<td>Email-Client ID</td>
+<td>Email address used in registration - Client ID generated with registration</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>Hashed Password</td>
+<td>Hashed version of password</td>
+</tr>
+</tbody></table>
+
+<h2 id="post-request-to-send-data">POST request to send data</h2>
 
       </div>
       <div class="dark-box">
