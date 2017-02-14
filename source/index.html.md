@@ -136,7 +136,7 @@ password | Password used in DataGene Web / Mobile registration.
 Remember — 403 error means username or password is incorrect!
 </aside>
 
-# Register new user
+# Register - New User
 
 ## Internal
 
@@ -2039,3 +2039,431 @@ Date String | Date string formatted as dd/mm/yyyy to return a dd/mm/yy formatted
 ## Drug Cupboard
 
 # Sync
+## Sync Addresses
+<aside class="notice">
+JSON data pulled from server is technically invalid, we use the table prefix before data for each record.
+</aside>
+
+Smartphone sends and receives data to endpoints based on uri in the JSON file the app downloads on sync (to ensure up to date endpoints).
+
+`GET http://mistro.com.au/ipaddresses_au.json`
+
+```json
+[  
+   {  
+      "pktip":{  
+         "postipaddress":"119.252.76.56:8891",
+         "syncipaddress":"119.252.76.56:3001",
+         "Centre":"2",
+         "Name":"Hico Australia"
+      }
+   },
+   {  
+      "pktip":{  
+         "postipaddress":"119.252.76.56:8891",
+         "syncipaddress":"119.252.76.56:3001",
+         "Centre":"3",
+         "Name":"Yarram"
+      }
+   },  
+   {  
+      "pktip":{  
+         "postipaddress":"119.252.76.56:8891",
+         "syncipaddress":"119.252.76.56:3001",
+         "Centre":"4",
+         "Name":"National Herd Development"
+      }
+   },
+   {  
+      "pktip":{  
+         "postipaddress":"119.252.76.56:8891",
+         "syncipaddress":"119.252.76.56:3001",
+         "Centre":"15",
+         "Name":"Dairy Express"
+      }
+   },  
+   {  
+      "pktip":{  
+         "postipaddress":"119.252.76.56:8891",
+         "syncipaddress":"119.252.76.56:3001",
+         "Centre":"22",
+         "Name":"TasHerd"
+      }
+   },    
+   {  
+      "pktip":{  
+         "postipaddress":"119.252.76.56:8891",
+         "syncipaddress":"119.252.76.56:3001",
+         "Centre":"32",
+         "Name":"FarmWest"
+      }
+   },
+   {  
+      "pktip":{  
+         "postipaddress":"202.164.192.189:9890",
+         "syncipaddress":"202.164.192.189:3001",
+         "Centre":"999",
+         "Name":"Demo"
+      }
+   }
+]
+```
+
+## GET requests for data
+<aside class="notice">
+JSON data pulled from server is technically invalid, we use the table prefix before data for each record.
+</aside>
+
+### AnimalIDs
+```json
+{  
+   "pktanimalid":{  
+      "id":"1018",
+      "S":"F",
+      "Herd":"703932"
+   }
+}
+...
+```
+
+`GET 202.164.192.189:3001/pktanimalids.json`
+
+#### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+herd | Herd Mask | Herd Mask / Shire Herd number
+login | Email-Client ID | Email address used in registration - Client ID generated with registration
+pwd | Hashed Password | Hashed version of password
+dpc | DPC Code | DPC Code app is set to sync with
+
+
+### Bull Teams
+```json
+{  
+   "pktbteam":{  
+      "id":"2140000773",
+      "BTeams_HerdID":"703478",
+      "BTeams_BullID":"A00009209",
+      "BTeams_Nasis1":"29FFP65",
+      "BTeams_Nasis2":"DONOR",
+      "BTeams_ShortName":null,
+      "BTeams_RegName":"ELITE MOUNTAIN DONOR IMP (E.T)",
+      "BTeams_Birth":"1994-04-26",
+      "BTeams_BreedS":"FFFF",
+      "BTeams_Modified":"2014-04-14 00:00:01"
+   }
+}
+...
+```
+
+`GET 202.164.192.189:3001/pktbteams.json`
+
+#### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+herd | Herd Mask | Herd Mask / Shire Herd number
+login | Email-Client ID | Email address used in registration - Client ID generated with registration
+pwd | Hashed Password | Hashed version of password
+dpc | DPC Code | DPC Code app is set to sync with
+
+### Bulls
+```json
+{  
+   "pktbull":{  
+      "id":"MBSL",
+      "Bulls_Nasis1":"11FFV24",
+      "Bulls_ShortName":"LOYALTY",
+      "Bulls_RegName":"MURRIBROOK STARLITE LOYALTY",
+      "Bulls_BreedS":"FFFF",
+      "Bulls_Birth":"1976-08-05",
+      "Bulls_Modified":"2015-06-24 00:00:01"
+   }
+}
+...
+```
+
+`GET 202.164.192.189:3001/pktbulls.json`
+
+### Cow Events
+```json
+{  
+   "pktcowevent":{  
+      "id":"2771160002274",
+      "CowEvents_HerdID":"703478",
+      "CowEvents_CowID":"Z16270508",
+      "CowEvents_Date":"2016-09-05",
+      "Events_ECode":"W14",
+      "Events_EGroup":"0",
+      "Events_NeedLoc":"0",
+      "CowEvents_Sire":null,
+      "CowEvents_TechID":null,
+      "CowEvents_RxTime":"0",
+      "CowEvents_Remark":null,
+      "CowEvents_Modified":null
+   }
+}
+...
+```
+
+`GET 202.164.192.189:3001/pktcowevents.json`
+
+#### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+herd | Herd Mask | Herd Mask / Shire Herd number
+login | Email-Client ID | Email address used in registration - Client ID generated with registration
+pwd | Hashed Password | Hashed version of password
+dpc | DPC Code | DPC Code app is set to sync with
+
+### Cow Tests
+```json
+{  
+   "pktcowtest":{  
+      "CowTests_HerdID":"703478",
+      "CowTests_CowID":"Z16270508",
+      "TestDays_Date":"2016-09-29",
+      "CowTests_Yield1":"22.6",
+      "CowTests_FatP":"3.78",
+      "CowTests_Fat":"0.85",
+      "CowTests_ProtP":"3.50",
+      "CowTests_Prot":"0.79",
+      "CowTests_ICCC":"106"
+   }
+}
+...
+```
+
+`GET 202.164.192.189:3001/pktcowtests.json`
+
+#### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+herd | Herd Mask | Herd Mask / Shire Herd number
+login | Email-Client ID | Email address used in registration - Client ID generated with registration
+pwd | Hashed Password | Hashed version of password
+dpc | DPC Code | DPC Code app is set to sync with
+
+### Drug Cupboard
+```json
+{  
+   "pktcupboard":{  
+      "id":"2130001173",
+      "Cupboards_HerdID":"703478",
+      "Cupboards_EventID":"49840",
+      "Cupboards_ECode":"CIDR",
+      "Cupboards_Name":"EAZI-BREED CIDR CATTLE DEVICE",
+      "Cupboards_EGroup":"11",
+      "Cupboards_NeedLoc":"0",
+      "Cupboards_Common":"1",
+      "Cupboards_ActMilkWith1":"0",
+      "Cupboards_ActMilkWith2":"0",
+      "Cupboards_ActMeatWith1":"0",
+      "Cupboards_ActMeatWith2":"0",
+      "Cupboards_Modified":"2013-12-11 00:00:01"
+   }
+}
+...
+```
+
+`GET 202.164.192.189:3001/pktcupboards.json`
+
+#### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+herd | Herd Mask | Herd Mask / Shire Herd number
+login | Email-Client ID | Email address used in registration - Client ID generated with registration
+pwd | Hashed Password | Hashed version of password
+dpc | DPC Code | DPC Code app is set to sync with
+
+### Event List
+```json
+{  
+   "pktevent":{  
+      "id":"1",
+      "Events_ECode":"MAP",
+      "Events_Name":"MATING-AI-CENTRE TECHNICIAN",
+      "Events_EGroup":"0",
+      "Events_NeedLoc":"0",
+      "Events_Common":"0",
+      "Events_Modified":"2008-06-12 00:00:01"
+   }
+}
+...
+```
+
+`GET 202.164.192.189:3001/pktevents.json`
+
+### Cows
+```json
+{  
+   "pktfemale":{  
+      "id":"Y07P30655",
+      "Cows_HerdID":"703932",
+      "Cows_NLISID":"",
+      "Cows_HIONo":"1905",
+      "Cows_HIONoSorted":" 0000001905",
+      "Cows_Birth":"2007-08-21",
+      "Cows_Sire":"1H0882",
+      "Cows_Dam":"2034",
+      "Cows_Dam_Herd":"703932",
+      "Cows_BreedS":"FFJF",
+      "Cows_ElecID":null,
+      "Cows_HRID":"1905",
+      "Cows_RegName":"1905",
+      "Cows_HerdBook":"",
+      "Cows_Remark":"",
+      "Cows_MilkSpeed":null,
+      "Cows_Temperament":null,
+      "Cows_Likeability":null,
+      "Cows_WorksDate":null,
+      "Cows_NZMI":"",
+      "Cows_BW":"",
+      "Cows_ABVASI":null,
+      "Cows_CowStatus":"2",
+      "Cows_CurAgeGroup":"8",
+      "Cows_LastCalvDate":"2015-10-14",
+      "Cows_LastDryOff":"2017-02-03",
+      "Cows_LastDryOffCode":"4",
+      "Cows_LastTest":"2016-05-11",
+      "Cows_TermDate":null,
+      "Cows_ExitCode":null,
+      "Cows_LastServ":"2016-06-13",
+      "Cows_LastSire":"29HO17576",
+      "Cows_PrevSire":null,
+      "Cows_PrevServ":null,
+      "Cows_DueDate":"2017-04-16",
+      "Cows_DueSire":null,
+      "Cows_DueDryOff":"2017-02-20",
+      "Cows_HerdGroup":"0",
+      "Cows_Modified":"2017-02-05 00:00:01"
+   }
+}
+...
+```
+
+`GET 202.164.192.189:3001/pktfemales.json`
+
+#### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+herd | Herd Mask | Herd Mask / Shire Herd number
+login | Email-Client ID | Email address used in registration - Client ID generated with registration
+pwd | Hashed Password | Hashed version of password
+dpc | DPC Code | DPC Code app is set to sync with
+
+### Graph Plots
+```json
+{  
+   "pktgraph":{  
+      "id":"3823997",
+      "herdID":"703478",
+      "chart":"1",
+      "lineNo":"1",
+      "pointNo":"1",
+      "xDate":null,
+      "xVal":null,
+      "y1":"574"
+   }
+}
+...
+```
+
+`GET 202.164.192.189:3001/pktgraphs.json`
+
+#### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+herd | Herd Mask | Herd Mask / Shire Herd number
+login | Email-Client ID | Email address used in registration - Client ID generated with registration
+pwd | Hashed Password | Hashed version of password
+dpc | DPC Code | DPC Code app is set to sync with
+
+### Herd Groups
+```json
+{  
+   "pkthgroup":{  
+      "HGroups_ID":"2120000270",
+      "HGroups_Code":"Group 1",
+      "Herds_Name":"703932"
+   }
+}
+...
+```
+
+`GET 202.164.192.189:3001/pkthgroups.json`
+
+#### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+herd | Herd Mask | Herd Mask / Shire Herd number
+dpc | DPC Code | DPC Code app is set to sync with
+
+### Cow Lactations
+```json
+{  
+   "pktlact":{  
+      "id":"229915000922",
+      "Lacts_HerdID":"703932",
+      "Lacts_CowID":"Y046Z0116",
+      "Cows_CowStatus":"1",
+      "Lacts_InitDate":"2015-08-16",
+      "Stats_CurPI":"108",
+      "Stats_TotalYield":"8156",
+      "Stats_TotalFatPerc":"5.08",
+      "Stats_TotalProtPerc":"3.31"
+   }
+}
+...
+```
+
+`GET 202.164.192.189:3001/pktlacts.json`
+
+#### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+herd | Herd Mask | Herd Mask / Shire Herd number
+login | Email-Client ID | Email address used in registration - Client ID generated with registration
+pwd | Hashed Password | Hashed version of password
+dpc | DPC Code | DPC Code app is set to sync with
+
+### Update errors
+```json
+{  
+   "pktupdate":{  
+      "Pktupdates_ID":"213894",
+      "Pktupdates_Pktid":"20160704104801",
+      "Pktupdates_Status":"E",
+      "Pktupdates_HerdID":"510299",
+      "Pktupdates_Entered":"2016-07-04 10:48:01",
+      "Pktupdates_Process":"S",
+      "Pktupdates_CowNo":"2537",
+      "Pktupdates_EDate":"2016-07-04",
+      "Pktupdates_ECode":"S3",
+      "Pktupdates_ErrMsg":"1102: Animal record already has a termination date recorded",
+      "Pktupdates_AnimalID":"Y106F0081",
+      "Pktupdates_DataString":""
+   }
+}
+...
+```
+
+`GET 202.164.192.189:3001/pktupdates.json`
+
+#### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+herd | Herd Mask | Herd Mask / Shire Herd number
+login | Email-Client ID | Email address used in registration - Client ID generated with registration
+pwd | Hashed Password | Hashed version of password
+
+## POST request to send data
